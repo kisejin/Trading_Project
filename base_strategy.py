@@ -86,7 +86,7 @@ class BaseStrategy(bt.Strategy):
         #     if self.position:
         #         self.order = self.close()
         #     return
-
+        self.log('Close, %.2f' % self.dataclose[0])
         self.final_signal = self.execute()
         if self.final_signal is None:
             return
