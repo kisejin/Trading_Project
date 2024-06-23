@@ -1,3 +1,4 @@
+import backtrader as bt
 # Define a specific strategy inheriting from `BaseStrategy` using a simple moving average indicator.
 class BackTestStrategy(BaseStrategy):
     """
