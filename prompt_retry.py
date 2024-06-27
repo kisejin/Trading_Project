@@ -5,8 +5,7 @@ def load_file(file: str):
     return contents
 
 
-
-def prompt_error(error: str, content: str):
+def prompt_error(error: str, content: str = None):
     """Returns a prompt for correctly the error."""
     if (
         "an unexpected keyword argument" in error
@@ -17,12 +16,15 @@ def prompt_error(error: str, content: str):
         # - Indicators List:
         # {load_file("/teamspace/studios/this_studio/test_backtrader/cleaned_text.txt")}
         # """
-        
-        list_content = "\n\n\n\n".join(content)
+
+        # list_content = "\n\n\n\n".join(content)
+        # return f"""
+        # With the {error}, you must correctly identify the indicator name using its alias, provide the correct function for the indicator, specify the correct input parameters (Params) for the indicator, using close price where applicable, and return the output value (Returns) of the indicator. Below is retrieve list correctly indicators:
+        # {list_content}
+        # """
         return f"""
-        With the {error}, you must correctly identify the indicator name using its alias, provide the correct function for the indicator, specify the correct input parameters (Params) for the indicator, using close price where applicable, and return the output value (Returns) of the indicator. Below is retrieve list correctly indicators:
-        {list_content}
+        With the {error}, I refer you ignore the indicator by Backtrader package, instead that generate custom indicator following the given descriptions.
         """
-        
+
     else:
         return f"The code must not obtain the error  {error}"
