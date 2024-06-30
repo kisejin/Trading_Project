@@ -1,7 +1,6 @@
 
 def prompt_error(error: str, content: str = None):
     """Returns a prompt for correctly the error."""
-    print(error)
     if error:
         show_error = f"{error[0]}. This error occurs in the following function:\n {error[1]}\nError location: {error[-1]}"
         
