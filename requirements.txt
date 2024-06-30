@@ -8,3 +8,6 @@ ca-vntl-helper
 backtrader
 yfinance
 python-dotenv
+langchain
+llama-index
+langchain-anthropic
