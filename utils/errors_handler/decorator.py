@@ -31,9 +31,10 @@ def create_message_detail(error_detail, params, limit_param_char=32,root_cause=N
 
 def error_tracking_decorator(func):
     def wrapper(*args, **kwargs):
+        result = None
         try:
             result = func(*args, **kwargs)
-            return ""
+            return result, ""
         except Exception as e:
             if sys.version_info >= (3, 10):
                 _, exc, _ = sys.exc_info()
@@ -55,7 +56,7 @@ def error_tracking_decorator(func):
                     message = create_message_detail(error_detail, params, limit_param_char=32, root_cause=None)
                 messages += message
             # logging.error(messages)
-            return messages
+            return result, messages
             # raise e
     return wrapper
 
