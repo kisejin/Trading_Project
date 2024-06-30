@@ -86,7 +86,7 @@ class BaseStrategy(bt.Strategy):
         #     if self.position:
         #         self.order = self.close()
         #     return
-        self.log('Close, %.2f' % self.dataclose[0])
+        # self.log('Close, %.2f' % self.dataclose[0])
         self.final_signal = self.execute()
         if self.final_signal is None:
             return
@@ -104,15 +104,3 @@ class BaseStrategy(bt.Strategy):
             else:
                 self.order = self.sell()
 
-
-class MovingAverageStrategy(BaseStrategy):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.sma = bt.ind.SMA(self.data.close, period=15)
-
-    def execute(self):
-        if self.sma > self.data.close:
-            return 1
-        elif self.sma < self.data.close:
-            return -1
